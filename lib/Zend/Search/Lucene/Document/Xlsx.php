@@ -67,7 +67,7 @@ class Zend_Search_Lucene_Document_Xlsx extends Zend_Search_Lucene_Document_OpenX
     const SCHEMA_WORKSHEETRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet';
 
     /**
-     * Xml Schema - Slide notes relation
+     * Xml Schema - Domaine notes relation
      *
      * @var string
      */

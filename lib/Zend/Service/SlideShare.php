@@ -40,7 +40,7 @@
 
 /**
  * The Zend_Service_SlideShare component is used to interface with the
- * slideshare.net web server to retrieve slide shows hosted on the web site for
+ * slideshare.net web server to retrieve domaine shows hosted on the web site for
  * display or other processing.
  *
  * @category   Zend
@@ -71,7 +71,7 @@ class Zend_Service_SlideShare
     const SERVICE_ERROR_ACCOUNT_BLOCKED  = 100;
 
     /**
-     * Slide share Web service communication URIs
+     * Domaine share Web service communication URIs
      */
     const SERVICE_UPLOAD_URI            = 'https://www.slideshare.net/api/2/upload_slideshow';
     const SERVICE_GET_SHOW_URI          = 'https://www.slideshare.net/api/2/get_slideshow';
@@ -314,15 +314,15 @@ class Zend_Service_SlideShare
     }
 
     /**
-     * Uploads the specified Slide show the the server
+     * Uploads the specified Domaine show the the server
      *
-     * @param Zend_Service_SlideShare_SlideShow $ss The slide show
+     * @param Zend_Service_SlideShare_SlideShow $ss The domaine show
      *                                              object representing the
-     *                                              slide show to upload
-     * @param boolean $makeSrcPublic                Determines if the slide
+     *                                              domaine show to upload
+     * @param boolean $makeSrcPublic                Determines if the domaine
      *                                              show's source file is public
      *                                              or not upon upload
-     * @return Zend_Service_SlideShare_SlideShow The passed Slide show object,
+     * @return Zend_Service_SlideShare_SlideShow The passed Domaine show object,
      *                                           with the new assigned ID
      *                                           provided
      * @throws Zend_Service_SlideShare_Exception
@@ -410,9 +410,9 @@ class Zend_Service_SlideShare
     }
 
     /**
-     * Retrieves a slide show's information based on slide show ID
+     * Retrieves a domaine show's information based on domaine show ID
      *
-     * @param int $ssId The slide show ID
+     * @param int $ssId The domaine show ID
      * @return Zend_Service_SlideShare_SlideShow the Slideshow object
      * @throws Zend_Service_SlideShare_Exception
      */
@@ -473,11 +473,11 @@ class Zend_Service_SlideShare
     }
 
     /**
-     * Retrieves an array of slide shows for a given username
+     * Retrieves an array of domaine shows for a given username
      *
-     * @param string $username The username to retrieve slide shows from
+     * @param string $username The username to retrieve domaine shows from
      * @param int $offset The offset of the list to start retrieving from
-     * @param int $limit The maximum number of slide shows to retrieve
+     * @param int $limit The maximum number of domaine shows to retrieve
      * @return array An array of Zend_Service_SlideShare_SlideShow objects
      */
     public function getSlideShowsByUsername(
@@ -490,11 +490,11 @@ class Zend_Service_SlideShare
     }
 
     /**
-     * Retrieves an array of slide shows based on tag
+     * Retrieves an array of domaine shows based on tag
      *
-     * @param string $tag The tag to retrieve slide shows with
+     * @param string $tag The tag to retrieve domaine shows with
      * @param int $offset The offset of the list to start retrieving from
-     * @param int $limit The maximum number of slide shows to retrieve
+     * @param int $limit The maximum number of domaine shows to retrieve
      * @return array An array of Zend_Service_SlideShare_SlideShow objects
      */
     public function getSlideShowsByTag($tag, $offset = null, $limit = null)
@@ -513,11 +513,11 @@ class Zend_Service_SlideShare
     }
 
     /**
-     * Retrieves an array of slide shows based on group name
+     * Retrieves an array of domaine shows based on group name
      *
-     * @param string $group The group name to retrieve slide shows for
+     * @param string $group The group name to retrieve domaine shows for
      * @param int $offset The offset of the list to start retrieving from
-     * @param int $limit The maximum number of slide shows to retrieve
+     * @param int $limit The maximum number of domaine shows to retrieve
      * @return array An array of Zend_Service_SlideShare_SlideShow objects
      */
     public function getSlideShowsByGroup($group, $offset = null, $limit = null)
@@ -529,10 +529,10 @@ class Zend_Service_SlideShare
      * Retrieves Zend_Service_SlideShare_SlideShow object arrays based on the type of
      * list desired
      *
-     * @param string $key    The type of slide show object to retrieve
-     * @param string $value  The specific search query for the slide show type to look up
+     * @param string $key    The type of domaine show object to retrieve
+     * @param string $value  The specific search query for the domaine show type to look up
      * @param int    $offset The offset of the list to start retrieving from
-     * @param int    $limit  The maximum number of slide shows to retrieve
+     * @param int    $limit  The maximum number of domaine shows to retrieve
      * @return array An array of Zend_Service_SlideShare_SlideShow objects
      * @throws Zend_Service_SlideShare_Exception
      */

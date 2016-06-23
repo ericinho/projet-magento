@@ -24,7 +24,7 @@
 #require_once 'Zend/Dojo/View/Helper/Dijit.php';
 
 /**
- * Abstract class for Dojo Slider dijits
+ * Abstract class for Dojo Domaine dijits
  *
  * @uses       Zend_Dojo_View_Helper_Dijit
  * @package    Zend_Dojo
@@ -38,7 +38,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.Slider';
+    protected $_module = 'dijit.form.Domaine';
 
     /**
      * Required slider parameters
@@ -47,13 +47,13 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
     protected $_requiredParams = array('minimum', 'maximum', 'discreteValues');
 
     /**
-     * Slider type -- vertical or horizontal
+     * Domaine type -- vertical or horizontal
      * @var string
      */
     protected $_sliderType;
 
     /**
-     * dijit.form.Slider
+     * dijit.form.Domaine
      *
      * @param  int $id
      * @param  mixed $value

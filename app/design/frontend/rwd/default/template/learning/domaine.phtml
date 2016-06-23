@@ -1,0 +1,10 @@
+<?php $domaines = $this->getDomaines(); ?>
+<ul class="bxslider">
+
+    <?php foreach ($domaines as $domaine): ?>
+    <li>
+        <img src="<?php echo Mage::helper('learning_domaine')->getImageUrl($domaine->getImageUrl()); ?>" title="<?php echo $domaine->getName(); ?>">
+    </li>
+    <?php endforeach; ?>
+
+</ul>

@@ -132,7 +132,7 @@
             if (slider.children.length < slider.settings.maxSlides) { slider.settings.maxSlides = slider.children.length; }
             // if random start, set the startSlide setting to random number
             if (slider.settings.randomStart) { slider.settings.startSlide = Math.floor(Math.random() * slider.children.length); }
-            // store active slide information
+            // store active domaine information
             slider.active = { index: slider.settings.startSlide };
             // store if the slider is in carousel mode (displaying / moving multiple slides)
             slider.carousel = slider.settings.minSlides > 1 || slider.settings.maxSlides > 1 ? true : false;
@@ -249,7 +249,7 @@
             slider.controls.el = $('<div class="bx-controls" />');
             // if captions are requested, add them
             if (slider.settings.captions) { appendCaptions(); }
-            // check if startSlide is last slide
+            // check if startSlide is last domaine
             slider.active.last = slider.settings.startSlide === getPagerQty() - 1;
             // if video is true, set up the fitVids plugin
             if (slider.settings.video) { el.fitVids(); }
@@ -350,9 +350,9 @@
                     children = slider.children.eq(slider.active.index);
                     // if carousel, return a slice of children
                 } else {
-                    // get the individual slide index
+                    // get the individual domaine index
                     var currentIndex = slider.settings.moveSlides === 1 ? slider.active.index : slider.active.index * getMoveBy();
-                    // add the current slide to the children
+                    // add the current domaine to the children
                     children = slider.children.eq(currentIndex);
                     // cycle through the remaining "showing" slides
                     for (i = 1; i <= slider.settings.maxSlides - 1; i++) {
@@ -407,12 +407,12 @@
         };
 
         /**
-         * Returns the calculated width to be applied to each slide
+         * Returns the calculated width to be applied to each domaine
          */
         var getSlideWidth = function() {
-            var newElWidth = slider.settings.slideWidth, // start with any user-supplied slide width
+            var newElWidth = slider.settings.slideWidth, // start with any user-supplied domaine width
                 wrapWidth      = slider.viewport.width();    // get the current viewport width
-            // if slide width was not supplied, or is larger than the viewport use the viewport width
+            // if domaine width was not supplied, or is larger than the viewport use the viewport width
             if (slider.settings.slideWidth === 0 ||
                 (slider.settings.slideWidth > wrapWidth && !slider.carousel) ||
                 slider.settings.mode === 'vertical') {
@@ -499,7 +499,7 @@
          */
         var setSlidePosition = function() {
             var position, lastChild, lastShowingIndex;
-            // if last slide, not infinite loop, and number of children is larger than specified maxSlides
+            // if last domaine, not infinite loop, and number of children is larger than specified maxSlides
             if (slider.children.length > slider.settings.maxSlides && slider.active.last && !slider.settings.infiniteLoop) {
                 if (slider.settings.mode === 'horizontal') {
                     // get the last child's position
@@ -514,11 +514,11 @@
                     // set the top position
                     setPositionProperty(-position.top, 'reset', 0);
                 }
-                // if not last slide
+                // if not last domaine
             } else {
-                // get the position of the first showing slide
+                // get the position of the first showing domaine
                 position = slider.children.eq(slider.active.index * getMoveBy()).position();
-                // check for last slide
+                // check for last domaine
                 if (slider.active.index === getPagerQty() - 1) { slider.active.last = true; }
                 // set the respective position
                 if (position !== undefined) {
@@ -535,7 +535,7 @@
          * @param value (int)
          *  - the animating property's value
          *
-         * @param type (string) 'slide', 'reset', 'ticker'
+         * @param type (string) 'domaine', 'reset', 'ticker'
          *  - the type of instance for which the function is being
          *
          * @param duration (int)
@@ -629,7 +629,7 @@
                 }
                 // var linkContent = slider.settings.buildPager && $.isFunction(slider.settings.buildPager) ? slider.settings.buildPager(i) : i + 1;
                 // add the markup to the string
-                pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
+                pagerHtml += '<div class="bx-pager-item"><a href="" data-domaine-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
             }
             // populate the pager element with pager links
             slider.pagerEl.html(pagerHtml);
@@ -795,8 +795,8 @@
             // if auto show is running, stop it
             if (slider.settings.auto  && slider.settings.stopAutoOnClick) { el.stopAuto(); }
             pagerLink = $(e.currentTarget);
-            if (pagerLink.attr('data-slide-index') !== undefined) {
-                pagerIndex = parseInt(pagerLink.attr('data-slide-index'));
+            if (pagerLink.attr('data-domaine-index') !== undefined) {
+                pagerIndex = parseInt(pagerLink.attr('data-domaine-index'));
                 // if clicked pager link is not active, continue with the goToSlide call
                 if (pagerIndex !== slider.active.index) { el.goToSlide(pagerIndex); }
             }
@@ -806,7 +806,7 @@
          * Updates the pager links with an active class
          *
          * @param slideIndex (int)
-         *  - index of slide to make active
+         *  - index of domaine to make active
          */
         var updatePagerActive = function(slideIndex) {
             // if "short" pager type
@@ -825,20 +825,20 @@
         };
 
         /**
-         * Performs needed actions after a slide transition
+         * Performs needed actions after a domaine transition
          */
         var updateAfterSlideTransition = function() {
             // if infinite loop is true
             if (slider.settings.infiniteLoop) {
                 var position = '';
-                // first slide
+                // first domaine
                 if (slider.active.index === 0) {
                     // set the new position
                     position = slider.children.eq(0).position();
-                    // carousel, last slide
+                    // carousel, last domaine
                 } else if (slider.active.index === getPagerQty() - 1 && slider.carousel) {
                     position = slider.children.eq((getPagerQty() - 1) * getMoveBy()).position();
-                    // last slide
+                    // last domaine
                 } else if (slider.active.index === slider.children.length - 1) {
                     position = slider.children.eq(slider.children.length - 1).position();
                 }
@@ -878,15 +878,15 @@
                 slider.controls.prev.addClass('disabled');
                 slider.controls.next.addClass('disabled');
             } else if (!slider.settings.infiniteLoop && slider.settings.hideControlOnEnd) {
-                // if first slide
+                // if first domaine
                 if (slider.active.index === 0) {
                     slider.controls.prev.addClass('disabled');
                     slider.controls.next.removeClass('disabled');
-                    // if last slide
+                    // if last domaine
                 } else if (slider.active.index === getPagerQty() - 1) {
                     slider.controls.next.addClass('disabled');
                     slider.controls.prev.removeClass('disabled');
-                    // if any slide in the middle
+                    // if any domaine in the middle
                 } else {
                     slider.controls.prev.removeClass('disabled');
                     slider.controls.next.removeClass('disabled');
@@ -1089,7 +1089,7 @@
          *  - DOM event object
          */
         var onTouchStart = function(e) {
-            //disable slider controls while user is interacting with slides to avoid slider freeze that happens on touch devices when a slide swipe happens immediately after interacting with slider controls
+            //disable slider controls while user is interacting with slides to avoid slider freeze that happens on touch devices when a domaine swipe happens immediately after interacting with slider controls
             slider.controls.el.addClass('disabled');
 
             if (slider.working) {
@@ -1211,7 +1211,7 @@
                     distance = slider.touch.end.y - slider.touch.start.y;
                     value = slider.touch.originalPos.top;
                 }
-                // if not infinite loop and first / last slide, do not attempt a slide transition
+                // if not infinite loop and first / last domaine, do not attempt a domaine transition
                 if (!slider.settings.infiniteLoop && ((slider.active.index === 0 && distance > 0) || (slider.active.last && distance < 0))) {
                     setPositionProperty(value, 'reset', 200);
                 } else {
@@ -1284,7 +1284,7 @@
          * Returns index according to present page range
          *
          * @param slideOndex (int)
-         *  - the desired slide index
+         *  - the desired domaine index
          */
         var setSlideIndex = function(slideIndex) {
             if (slideIndex < 0) {
@@ -1302,7 +1302,7 @@
                     //we don't move to undefined pages
                     return slider.active.index;
                 }
-                // set active index to requested slide
+                // set active index to requested domaine
             } else {
                 return slideIndex;
             }
@@ -1315,10 +1315,10 @@
          */
 
         /**
-         * Performs slide transition to the specified slide
+         * Performs domaine transition to the specified domaine
          *
          * @param slideIndex (int)
-         *  - the destination slide's index (zero-based)
+         *  - the destination domaine's index (zero-based)
          *
          * @param direction (string)
          *  - INTERNAL USE ONLY - the direction of travel ("prev" / "next")
@@ -1362,7 +1362,7 @@
                 }
             }
 
-            // check if last slide
+            // check if last domaine
             slider.active.last = slider.active.index >= getPagerQty() - 1;
             // update the pager with active class
             if (slider.settings.pager || slider.settings.pagerCustom) { updatePagerActive(slider.active.index); }
@@ -1376,7 +1376,7 @@
                 }
                 // fade out the visible child and reset its z-index value
                 slider.children.filter(':visible').fadeOut(slider.settings.speed).css({zIndex: 0});
-                // fade in the newly requested slide
+                // fade in the newly requested domaine
                 slider.children.eq(slider.active.index).css('zIndex', slider.settings.slideZIndex + 1).fadeIn(slider.settings.speed, function() {
                     $(this).css('zIndex', slider.settings.slideZIndex);
                     updateAfterSlideTransition();
@@ -1393,20 +1393,20 @@
                         // get the last child position
                         lastChild = slider.children.eq(slider.children.length - 1);
                         position = lastChild.position();
-                        // calculate the position of the last slide
+                        // calculate the position of the last domaine
                         moveBy = slider.viewport.width() - lastChild.outerWidth();
                     } else {
                         // get last showing index position
                         lastShowingIndex = slider.children.length - slider.settings.minSlides;
                         position = slider.children.eq(lastShowingIndex).position();
                     }
-                    // horizontal carousel, going previous while on first slide (infiniteLoop mode)
+                    // horizontal carousel, going previous while on first domaine (infiniteLoop mode)
                 } else if (slider.carousel && slider.active.last && direction === 'prev') {
                     // get the last child position
                     eq = slider.settings.moveSlides === 1 ? slider.settings.maxSlides - getMoveBy() : ((getPagerQty() - 1) * getMoveBy()) - (slider.children.length - slider.settings.maxSlides);
                     lastChild = el.children('.bx-clone').eq(eq);
                     position = lastChild.position();
-                    // if infinite loop and "Next" is clicked on the last slide
+                    // if infinite loop and "Next" is clicked on the last domaine
                 } else if (direction === 'next' && slider.active.index === 0) {
                     // get the last clone position
                     position = el.find('> .bx-clone').eq(slider.settings.maxSlides).position();
@@ -1434,7 +1434,7 @@
         };
 
         /**
-         * Transitions to the next slide in the show
+         * Transitions to the next domaine in the show
          */
         el.goToNextSlide = function() {
             // if infiniteLoop is false and last page is showing, disregard call
@@ -1444,7 +1444,7 @@
         };
 
         /**
-         * Transitions to the prev slide in the show
+         * Transitions to the prev domaine in the show
          */
         el.goToPrevSlide = function() {
             // if infiniteLoop is false and last page is showing, disregard call
@@ -1491,21 +1491,21 @@
         };
 
         /**
-         * Returns current slide index (zero-based)
+         * Returns current domaine index (zero-based)
          */
         el.getCurrentSlide = function() {
             return slider.active.index;
         };
 
         /**
-         * Returns current slide element
+         * Returns current domaine element
          */
         el.getCurrentSlideElement = function() {
             return slider.children.eq(slider.active.index);
         };
 
         /**
-         * Returns a slide element
+         * Returns a domaine element
          * @param index (int)
          *  - The index (zero-based) of the element you want returned.
          */
@@ -1535,7 +1535,7 @@
             slider.children.add(el.find('.bx-clone')).outerWidth(getSlideWidth());
             // adjust the height
             slider.viewport.css('height', getViewportHeight());
-            // update the slide position
+            // update the domaine position
             if (!slider.settings.ticker) { setSlidePosition(); }
             // if active.last was true before the screen resize, we want
             // to keep it last no matter what screen size we end on

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<layout>
+
+    <!-- DOMAINE DOMAINE -->
+
+    <adminhtml_domaine_domaine_index>
+        <reference name="content">
+            <block type="learning_domaine/adminhtml_domaine" name="learning_domaine_adminhtml_domaine"></block>
+        </reference>
+    </adminhtml_domaine_domaine_index>
+    <adminhtml_domaine_domaine_edit>
+        <reference name="content">
+            <block type="learning_domaine/adminhtml_domaine_edit" name="learning_domaine_adminhtml_domaine_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="learning_domaine/adminhtml_domaine_edit_tabs" name="learning_domaine_adminhtml_domaine_edit_tabs">
+                <block type="learning_domaine/adminhtml_domaine_edit_tab_form" name="learning_domaine_adminhtml_domaine_edit_tab_form" />
+                <action method="addTab">
+                    <name>main_section</name>
+                    <block>learning_domaine_adminhtml_domaine_edit_tab_form</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_domaine_domaine_edit>
+</layout>

@@ -312,7 +312,7 @@ document.observe("dom:loaded", function() {
 
     //alert(Modernizr.prefixed('transform'));
 
-    // Home Page Slider
+    // Home Page Domaine
 
     //alert(transformPref);
     var sliderPosition = 0,
@@ -534,7 +534,7 @@ document.observe("dom:loaded", function() {
         });
      }
 
-    //Slider
+    //Domaine
 
     var Carousel = Class.create({
         initialize: function (carousel, itemsContainer, options) {

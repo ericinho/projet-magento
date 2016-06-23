@@ -280,7 +280,7 @@ faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorpe
             <p>Click on the <strong>Privacy</strong> tab</p>
         </li>
         <li>
-            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>)
+            <p>Click the <strong>Default</strong> button (or manually domaine the bar down to <strong>Medium</strong>)
             under <strong>Settings</strong>. Click <strong>OK</strong></p>
             <p><img src=\"{{skin url=\"images/cookies/ie6-2.gif\"}}\" alt=\"\" /></p>
         </li>

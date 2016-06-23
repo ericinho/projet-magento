@@ -21,7 +21,7 @@
  */
 
 /** Zend_Dojo_View_Helper_Slider */
-#require_once 'Zend/Dojo/View/Helper/Slider.php';
+#require_once 'Zend/Dojo/View/Helper/Domaine.php';
 
 /**
  * Dojo VerticalSlider dijit
@@ -41,7 +41,7 @@ class Zend_Dojo_View_Helper_VerticalSlider extends Zend_Dojo_View_Helper_Slider
     protected $_dijit  = 'dijit.form.VerticalSlider';
 
     /**
-     * Slider type
+     * Domaine type
      * @var string
      */
     protected $_sliderType = 'Vertical';
